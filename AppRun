@@ -1,3 +1,20 @@
-#!/bin/bash
+#! /usr/bin/env python
 
-exec python $(dirname $0)/blackout_ui.py
+from PyQt4 import QtCore, QtGui
+from PyQt4.QtCore import Qt
+import blackout_ui
+import sys
+
+if __name__ == "__main__":
+    app = QtGui.QApplication(sys.argv)
+    Dialog = QtGui.QDialog()
+    flags = Qt.Window
+    flags |= Qt.WindowSystemMenuHint
+    flags |= Qt.WindowMinimizeButtonHint
+    flags |= Qt.WindowMaximizeButtonHint
+    flags |= Qt.WindowCloseButtonHint
+    Dialog.setWindowFlags(flags)
+    ui = blackout_ui.Ui_Dialog()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())
